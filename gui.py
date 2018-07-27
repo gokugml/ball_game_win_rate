@@ -34,6 +34,10 @@ def bet():
     except tk.TclError:
         return
 
+def reset():
+    value_list = [date, home_team, away_team, balance, mkt_odds, my_odds, bet_amount]
+    for value in value_list:
+        value.set('')
 
 tk.Label(window, text='Basketball Game Predictor', font=('Arial', 20), bg='CORNFLOWERBLUE',
          width=100, height=3).pack()
@@ -76,13 +80,14 @@ txt_balance = tk.Entry(frm_t, textvariable=balance).grid(row=0, column=3, sticky
 txt_mkt_odds = tk.Entry(frm_t, textvariable=mkt_odds).grid(row=1, column=3, sticky=tk.W)
 txt_my_odds = tk.Entry(frm_t, textvariable=my_odds).grid(row=2, column=3, sticky=tk.W)
 txt_bet_amount = tk.Entry(frm_t, textvariable=bet_amount).grid(row=0, column=5, sticky=tk.W)
-
+btn_reset = tk.Button(frm_t, text='Reset', font=('Arial', 18), command=reset).grid(row=1, column=5, sticky=tk.W)
 v = tk.IntVar()
 r1 = tk.Radiobutton(frm_t, text='Bet Home', variable=v, value=1, indicatoron=0).grid(row=1, column=4)
 r2 = tk.Radiobutton(frm_t, text='Bet Away', variable=v, value=2, indicatoron=0).grid(row=2, column=4)
 
-b = tk.Button(frm_b, text='Bet', fg='red', font=('Arial', 18),
+btn_bet = tk.Button(frm_b, text='Bet', fg='red', font=('Arial', 18),
               width=10, command=bet).pack(side='top')
+
 t = tk.Text(frm_b, width=50, height=20)
 t.pack(fill=tk.X, expand=1)
 
