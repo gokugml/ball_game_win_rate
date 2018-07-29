@@ -9,11 +9,13 @@ Created on Tue Jul 24 20:35:52 2018
 import tkinter as tk
 from tkinter import ttk
 import win_rate
+import os
 
 # my data
-work_dir = "D:/python/basketball_game_predictor/"
+work_dir = os.getcwd()
 my_data = win_rate.Data(work_dir)
-my_bet = win_rate.Bet(work_dir)
+r_work_dir = "/".join(work_dir.split('\\'))
+my_bet = win_rate.Bet(r_work_dir)
 
 
 # GUI
